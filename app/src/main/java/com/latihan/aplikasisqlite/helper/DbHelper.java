@@ -26,13 +26,13 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate (SQLiteDatabase db){
         final String SQL_CREATE_MOVIE_TABLE = "CREATE TABLE " + TABLE_SQLite + " (" + COLUMN_ID + " INTEGER PRIMARY KEY autoincrement, "
-                + COLUMN_NAME + "TEXT NOT NULL, " +
-                COLUMN_ADDRESS + "TEXT NOT NULL" + ")";
+                + COLUMN_NAME + " TEXT NOT NULL, " +
+                COLUMN_ADDRESS + " TEXT NOT NULL" + ")";
         db.execSQL(SQL_CREATE_MOVIE_TABLE);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SQLite );
+        db.execSQL(" DROP TABLE IF EXISTS " + TABLE_SQLite );
          onCreate(db);
     }
     public ArrayList<HashMap<String, String>> getAllData(){
@@ -66,10 +66,10 @@ public class DbHelper extends SQLiteOpenHelper {
     }
     public void update(int id, String name, String address){
         SQLiteDatabase database = this.getWritableDatabase();
-        String updateQuery = "UPDATE " + TABLE_SQLite + " SET"
+        String updateQuery = "UPDATE " + TABLE_SQLite + " SET "
                 + COLUMN_NAME + "='" + name + "', "
                 + COLUMN_ADDRESS + "='" + address + "'"
-                + "WHERE " + COLUMN_ID + "=" + "'" + id + "'";
+                + " WHERE " + COLUMN_ID + "=" + "'" + id + "'";
         Log.e("update sqlite ", "" + updateQuery);
         database.execSQL(updateQuery);
         database.close();
@@ -79,7 +79,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void delete(int id){
         SQLiteDatabase database = this.getWritableDatabase();
 
-        String updateQuery = "DELETE FROM " + TABLE_SQLite + "WHERE " + COLUMN_ID + "=" + "'" + id + "'";
+        String updateQuery = "DELETE FROM " + TABLE_SQLite + " WHERE " + COLUMN_ID + "=" + "'" + id + "'";
         Log.e("update sqlite ", "" + updateQuery);
         database.execSQL(updateQuery);
         database.close();

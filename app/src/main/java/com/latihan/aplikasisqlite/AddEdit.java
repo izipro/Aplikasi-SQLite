@@ -105,7 +105,7 @@ public class AddEdit extends AppCompatActivity {
 
 
         } else {
-            SQLite.update(Integer.parseInt(txt_id.getText().toString().trim()), txt_name.getText().toString().trim(),txt_address.getText().toString().trim());
+            SQLite.update(Integer.parseInt(txt_id.getText().toString().trim()), txt_name.getText().toString().trim(), txt_address.getText().toString().trim());
             blank();
             finish();
         }
